@@ -8,8 +8,13 @@
 
 #import "ImageModel.h"
 
+@interface ImageModel()
+@property (strong, nonatomic) NSArray* imageNames;
+@property (strong, nonatomic) NSDictionary* imageDict;
+@end
 @implementation ImageModel
 @synthesize imageNames = _imageNames;
+@synthesize imageDict = _imageDict;
 
 +(ImageModel*)sharedInstance{
     static ImageModel* _sharedInstance = nil;
@@ -23,18 +28,39 @@
 
 -(NSArray*) imageNames{
     if(!_imageNames)
-        _imageNames = @[@"Bill",@"Eric",@"Jeff"];
+        _imageNames = @[@"Bill",@"Eric",@"Jeff",@"cat",@"rainbow",@"sunset"];
     
     return _imageNames;
 }
 
+-(NSDictionary*) imageDict{
+    if(!_imageDict){
+        _imageDict = @{@"Bill":[UIImage imageNamed:@"Bill"],
+                       @"Eric":[UIImage imageNamed:@"Eric"],
+                       @"Jeff":[UIImage imageNamed:@"Jeff"],
+                       @"cat":[UIImage imageNamed:@"cat"],
+                       @"rainbow":[UIImage imageNamed:@"rainbow"],
+                       @"sunset":[UIImage imageNamed:@"sunset"]
+        };
+    }
+    return _imageDict;
+}
 
 -(UIImage*)getImageWithName:(NSString*)name{
-    UIImage* image = nil;
-    
-    image = [UIImage imageNamed:name];
-    
-    return image;
+    return self.imageDict[name];
+}
+
+-(UIImage*)getImageWithIndex:(NSInteger)index{
+    NSString* imageName = self.imageNames[index];
+    return self.imageDict[imageName];
+}
+
+-(NSInteger)numberOfImages{
+    return [self.imageNames count];
+}
+
+-(NSString*)getImageNameForIndex:(NSInteger)index{
+    return self.imageNames[index];
 }
 
 @end
