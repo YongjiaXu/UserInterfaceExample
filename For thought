@@ -1,0 +1,11 @@
+Q: Is this new implementation of the image model more efficient? Why or Why not?
+A: Yes. Because the new implementation is actually preloading the images. Preloading images takes less time than accessing images without preload. It is also helpful in table view and colletion view which can make it more responsive and make the scrolling smoother.
+
+Q: Is this implementation of the model more scalable? Why or Why not?
+A: Yes. This new implementation is more scalable because it uses a dictionary to map all the images and functions to access the dictionary. Therefore, when a user wants to add another View, he can just access the images through the “API” functions.
+
+Q: If there were 1000 images in the image.assets file, what would you change in the implementation of the
+image model?
+A: We could use NSCache to help us store images and reuse them. If the images can be loaded from URL, we could even use URLSession to load the images asynchronously and make the user interface more responsive.
+
+reference: https://developer.apple.com/documentation/uikit/views_and_controls/table_views/asynchronously_loading_images_into_table_and_collection_views
