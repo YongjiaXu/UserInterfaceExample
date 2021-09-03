@@ -1,3 +1,8 @@
+Group Members:
+Yongjia Xu
+James Zhai
+John Zhang
+
 Q: Is this new implementation of the image model more efficient? Why or Why not?
 A: Yes. Because the new implementation is actually preloading the images. Preloading images takes less time than accessing images without preload. It is also helpful in table view and colletion view which can make it more responsive and make the scrolling smoother.
 
